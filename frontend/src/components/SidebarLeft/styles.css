@@ -1,0 +1,5 @@
+.bg-glass {
+    background: rgba(101, 66, 66, 0.29);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5.5px);
+}
