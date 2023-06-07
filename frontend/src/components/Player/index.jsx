@@ -18,7 +18,7 @@ const {
     BsMusicNoteList,
     FaRegWindowRestore } = icons;
 
-const index = () => {
+const index = ({ setToggleSidebar, toggleSidebar }) => {
 
     const thumbRef = useRef();
     const trackRef = useRef();
@@ -40,35 +40,33 @@ const index = () => {
         // dispatch(musicSlide.actions.setIsPlaying(true));
     };
     return (
-        <div className='h-[90px] px-5 flex items-center border'>
+        <div className='h-[90px] sm:px-5 px-2 flex items-center z-30 min-w-max bg-player'>
             <div className='flex gap-4 flex-auto h-[64px]'>
-                <div className='flex gap-3'>
-                    <div className='w-16 h-16 object-contain border flex justify-center items-center'>
-                        <img src={img} alt="thumbnail" className='' />
-                    </div>
-                    <span>
-                        <h3>Yêu anh em nhé</h3>
-                        <p>HuyR, Tùng Viu</p>
+                <div className='flex gap-3 items-center'>
+                    <img src={img} alt="thumbnail" className='sm:w-16 sm:h-16 w-14 h-14 object-cover rounded-full' />
+                    <span className='sm:block hidden'>
+                        <h3 className='sm:text-sm md:text-md'>Yêu anh em nhé</h3>
+                        <p className='sm:text-sm md:text-md'>HuyR, Tùng Viu</p>
                     </span>
                 </div>
-                <span className='flex items-center gap-3'>
-                    <HiOutlineDotsHorizontal />
+                <span className=' items-center gap-3 sm:flex hidden'>
+                    <HiOutlineDotsHorizontal className='' />
                     <AiFillHeart />
                 </span>
             </div>
             <div className='flex-auto h-[64px] flex flex-col gap-1 '>
                 <div className='flex gap-3 justify-center items-center'>
                     <BsShuffle />
-                    <MdOutlineSkipPrevious size={24} />
+                    <MdOutlineSkipPrevious className='sm:text-[24px] text-[20px]' />
                     <span className='p-1 border rounded-full'>
-                        <MdPause size={30} />
+                        <MdPause className='sm:text-[30px] text-[22px]' />
                     </span>
-                    <MdOutlineSkipNext size={24} />
+                    <MdOutlineSkipNext className='sm:text-[24px] text-[20px]' />
                     <BsRepeat />
                 </div>
                 <div>
                     <div className="w-full flex justify-center items-center gap-3 text-xs ">
-                        <span className="text-main-text">
+                        <span className="sm:text-sm text-xs">
                             00:00
                         </span>
                         <div
@@ -81,24 +79,23 @@ const index = () => {
                                 className="absolute h-full left-0 top-0 bg-main-500 rounded-full"
                             ></div>
                         </div>
-                        <span className="text-main-text">
+                        <span className="sm:text-sm text-xs">
                             00:00
                         </span>
                     </div>
                 </div>
             </div>
-            <div className="640:w-[30%] w-1/5 flex-auto text-white flex justify-center gap-5 items-center h-[64px]">
-                <span className="flex gap-5 max-1200:hidden">
+            <div className="640:w-[30%] w-1/5 flex-auto text-white flex justify-center sm:gap-5 gap-2 items-center h-[64px]">
+                <span className=" gap-5 sm:flex hidden ">
                     <BsMic size={20} />
-                    <FaRegWindowRestore size={20} />
                 </span>
                 <span className="flex gap-5 items-center">
-                    <span>
-                        <BsFillVolumeOffFill size={20} />
+                    <span className='sm:text-[24px] text-[20px]'>
+                        <BsFillVolumeOffFill />
                         {/* {audio.volume === 0 ? (
-                            <BsFillVolumeOffFill size={20} />
+                            <BsFillVolumeOffFill />
                         ) : (
-                            <BsFillVolumeUpFill size={20} />
+                            <BsFillVolumeUpFill />
                         )} */}
                     </span>
                     <input
@@ -107,13 +104,13 @@ const index = () => {
                         step="1"
                         max="100"
                         min="0"
-                        className="bg-[#ccc] slider max-640:hidden"
+                        className="bg-[#ccc] slider sm:block hidden "
                         onChange={handlerChangeVolume}
                     />
                 </span>
                 <span
                     className="cursor-pointer"
-                // onClick={handlerToggleSideBarRight}
+                    onClick={() => setToggleSidebar(!toggleSidebar)}
                 >
                     <BsMusicNoteList size={20} />
                 </span>

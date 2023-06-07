@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    backgroundPath: '',
+    backgroundPath: '/src/assets/backroundThemes/1.jpg',
 }
 
 const backgroundSlice = createSlice({
